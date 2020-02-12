@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "description": "test node",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "realm": "^3.6.3"
+  }
+}
