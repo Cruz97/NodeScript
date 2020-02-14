@@ -17,7 +17,7 @@ let creds = Realm.Sync.Credentials.usernamePassword(adminUser, adminPass); // cr
 const configuration = {
     sync: {
       fullSynchronization: true,
-      url: 'realms://demobsc.us1a.cloud.realm.io/Demo3',
+      url: 'realms://demobsc.us1a.cloud.realm.io/Demo14',
     },
     schema
   };
