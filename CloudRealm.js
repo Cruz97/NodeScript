@@ -75,15 +75,50 @@ const AppConfigurationSchema = {
   }
 }
 
- const AppContentSchema = {
+const User = {
+  name: 'User',
+  primaryKey: 'uuid',
+  properties: {
+    uuid: 'string?',
+    app_id: 'App?',
+    name: 'string?',
+    code: 'string?',
+    zone: 'Zone?',
+  }
+}
+
+const Card = {
+  name: 'Card',
+  primaryKey: 'uuid',
+  properties: {
+    uuid: 'string?',
+    app_id: 'App?',
+    code: 'string?',
+    status: 'bool?',
+    zone: 'Zone?',
+    type: 'string?' // qr/rfid,
+
+  }
+}
+
+const Zone = {
+  name: 'Zone',
+  primaryKey: 'uuid',
+  properties: {
+    uuid: 'string?',
+    name: 'string?'
+  }
+}
+
+const AppContent= {
   name: 'AppContent',
   primaryKey: 'uuid',
   properties: {
     uuid: 'string?',
     app_id: 'App?',
     title: 'string?',
-    type_id: 'AppContentType[]',
-    categories: 'AppContentCategory[]',
+    // type_id: 'AppContentType[]',
+    // categories: 'AppContentCategory[]',
     subtitle: 'string?',
     date: 'date?',
     image: 'AppImage?',
@@ -93,6 +128,37 @@ const AppConfigurationSchema = {
     //sections: 'AppContentSection[]'
   }
 }
+
+const Event = {
+  name: 'Event',
+  primaryKey: 'uuid',
+  properties: {
+    uuid: 'string?',
+    name: 'string?',
+    content_id: 'AppContent?',
+    app_id: 'App?',
+  }
+}
+
+const Log = {
+  name: 'Log',
+  primaryKey: 'uuid',
+  properties: {
+    uuid: 'string',
+    content_id: 'AppContent?',
+    app_id: 'App?',
+    event: 'Event?',
+    user_id: 'User?',
+    zone: 'Zone?',
+    status: 'bool?',
+    description: 'string?',
+    date: 'date?'
+  }
+}
+
+
+
+ 
 
 //  const AppSection = {
 //     name: 'AppSection',
@@ -148,104 +214,104 @@ const AppConfigurationSchema = {
 //   }
 // }
 
- const AppContentTypeSchema = {
-  name: 'AppContentType',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    name: 'string?',
-    type: 'string?', 
-    icon: 'string?',
-    //appid: 'App?'
-  }
-}
+//  const AppContentTypeSchema = {
+//   name: 'AppContentType',
+//   primaryKey: 'uuid',
+//   properties: {
+//     uuid: 'string?',
+//     app_id: 'App?',
+//     name: 'string?',
+//     type: 'string?', 
+//     icon: 'string?',
+//     //appid: 'App?'
+//   }
+// }
 
- const AppContentCategorySchema = {
-  name: 'AppContentCategory',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    name: 'string?',
-    icon: 'string?',
-    type: 'string?'
-  }
-}
+//  const AppContentCategorySchema = {
+//   name: 'AppContentCategory',
+//   primaryKey: 'uuid',
+//   properties: {
+//     uuid: 'string?',
+//     app_id: 'App?',
+//     name: 'string?',
+//     icon: 'string?',
+//     type: 'string?'
+//   }
+// }
 
- const AppContentTagSchema = {
-  name: 'AppContentTag',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    name: 'string?',
-    icon: 'string?',
-    type: 'string?'
-  }
-}
-
-
- const Rel_Content_Type = {
-    name: 'AppRel_Content_Type',
-    primaryKey: 'uuid',
-    properties: {
-        uuid: 'string?',
-        content_id: 'AppContent?',
-        type_id: 'AppContentType?'
-    }
-} 
-
- const Rel_Content_Category = {
-  name: 'AppRel_Content_Category',
-  primaryKey: 'uuid',
-  properties: {
-      uuid: 'string?',
-      content_id: 'AppContent?',
-      type_id: 'AppContentCategory?'
-  }
-} 
-
-const Rel_Content_Tag = {
-  name: 'AppRel_Content_Tag',
-  primaryKey: 'uuid',
-  properties: {
-      uuid: 'string?',
-      content_id: 'AppContent?',
-      type_id: 'AppContentTag?'
-  }
-}
-
- const AppContentSectionItemSchema = {
-  name: 'AppContentSectionItem',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    content_id: 'AppContent?',
-    sequence: 'int?'
-    // name: 'string?',
-    // title: 'string?',
-    // image: 'AppImage?',
-    // subtitle: 'string?',
-    // text: 'string?',
-    // date: 'date?',
-    // type: 'string?',
-    // icon: 'string?',
-  }
-}
+//  const AppContentTagSchema = {
+//   name: 'AppContentTag',
+//   primaryKey: 'uuid',
+//   properties: {
+//     uuid: 'string?',
+//     app_id: 'App?',
+//     name: 'string?',
+//     icon: 'string?',
+//     type: 'string?'
+//   }
+// }
 
 
- const AppContentSectionSchema = {
-  name: 'AppContentSection',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    name: 'string?',
-    items: 'AppContentSectionItem[]'
-  }
-}
+//  const Rel_Content_Type = {
+//     name: 'AppRel_Content_Type',
+//     primaryKey: 'uuid',
+//     properties: {
+//         uuid: 'string?',
+//         content_id: 'AppContent?',
+//         type_id: 'AppContentType?'
+//     }
+// } 
+
+//  const Rel_Content_Category = {
+//   name: 'AppRel_Content_Category',
+//   primaryKey: 'uuid',
+//   properties: {
+//       uuid: 'string?',
+//       content_id: 'AppContent?',
+//       type_id: 'AppContentCategory?'
+//   }
+// } 
+
+// const Rel_Content_Tag = {
+//   name: 'AppRel_Content_Tag',
+//   primaryKey: 'uuid',
+//   properties: {
+//       uuid: 'string?',
+//       content_id: 'AppContent?',
+//       type_id: 'AppContentTag?'
+//   }
+// }
+
+//  const AppContentSectionItemSchema = {
+//   name: 'AppContentSectionItem',
+//   primaryKey: 'uuid',
+//   properties: {
+//     uuid: 'string?',
+//     app_id: 'App?',
+//     content_id: 'AppContent?',
+//     sequence: 'int?'
+//     // name: 'string?',
+//     // title: 'string?',
+//     // image: 'AppImage?',
+//     // subtitle: 'string?',
+//     // text: 'string?',
+//     // date: 'date?',
+//     // type: 'string?',
+//     // icon: 'string?',
+//   }
+// }
+
+
+//  const AppContentSectionSchema = {
+//   name: 'AppContentSection',
+//   primaryKey: 'uuid',
+//   properties: {
+//     uuid: 'string?',
+//     app_id: 'App?',
+//     name: 'string?',
+//     items: 'AppContentSectionItem[]'
+//   }
+// }
 
 
 //  const AppSectionItemSchema = {
@@ -271,26 +337,6 @@ const Rel_Content_Tag = {
   }
 }
 
-const Parking = {
-  name: 'Parking',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    app_id: 'App?',
-    code: 'string?',
-    status: 'bool?',
-    zone: 'Zone?'
-  }
-}
-
-const ZoneParking = {
-  name: 'Zone',
-  primaryKey: 'uuid',
-  properties: {
-    uuid: 'string?',
-    name: 'string?'
-  }
-}
 
 
 //  const Realm = require('realm');
@@ -309,25 +355,29 @@ const ZoneParking = {
 //     tintcolor: { type: 'string?'},
 //   }
 // }
-
-module.exports = [
+export const schema = [
   AppSchema,
   AppCustomSchema,
   AppConfigurationSchema,
   LanguageSchema, 
   TranslateSchema,
-  AppContentSchema,
-  AppContentTypeSchema,
-  AppContentCategorySchema,
-  AppContentTagSchema,
-  Rel_Content_Category,
-  Rel_Content_Tag,
-  Rel_Content_Type,
-  AppContentSectionItemSchema,
-  AppContentSectionSchema,
-  AppImageSchema,
-  Parking,
-  ZoneParking
+  AppContent,
+  User,
+  Card,
+  Zone,
+  Event,
+  Log,
+  // AppContentTypeSchema,
+  // AppContentCategorySchema,
+  // AppContentTagSchema,
+  // Rel_Content_Category,
+  // Rel_Content_Tag,
+  // Rel_Content_Type,
+  // AppContentSectionItemSchema,
+  // AppContentSectionSchema,
+   AppImageSchema,
+  // Parking,
+  // ZoneParking
 ];
 
 

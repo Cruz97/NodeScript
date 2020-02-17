@@ -1,5 +1,5 @@
 const Realm = require('realm')
-const schema = require('./CloudRealm');
+const schema = require('./CloudRealm2');
 
 class RealmObject {
     constructor(realm) {
@@ -17,7 +17,7 @@ let creds = Realm.Sync.Credentials.usernamePassword(adminUser, adminPass); // cr
 const configuration = {
     sync: {
       fullSynchronization: true,
-      url: 'realms://demobsc.us1a.cloud.realm.io/Demo14',
+      url: 'realms://demobsc.us1a.cloud.realm.io/DemoNFC4',
     },
     schema
   };
@@ -40,9 +40,7 @@ Realm.Sync.User.login(authUrl, creds).then(user => {
 
 }).catch(error => {
     console.log(JSON.stringify('error => : '+error,null,4))
-}).finally(()=>{
-   
-});
+})
 
 
 //console.log('hello world')
